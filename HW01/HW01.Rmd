@@ -17,14 +17,23 @@ header-includes:
 ---
 
 
-```{r, echo=FALSE, warning=FALSE}
+```{r, echo=FALSE, warning=FALSE, include=FALSE }
 library(TSA)
 library(ggplot2)
 ```
 
 \textbf{1.1} 
- Scatterplot of LA Rainfall versus Last Year’s LA Rainfall
-```{r, echo=FALSE, warning=FALSE}
+The scatterplot of LA rainfall versus last year’s LA rainfall is presented in Figure \@ref(fig:sp-of-LA).
+
+\begin{figure}[htbp]
+    \centering
+        \includegraphics[width=0.5\textwidth]{plots/scatterplot_of_LA.pdf}
+    \caption{Scatterplot of LA Rainfall versus Last Year’s LA Rainfall}
+    \label{fig:sp-of-LA}
+\end{figure}
+ 
+\textbf{Code}
+```{r, eval=FALSE}
 data(larain)
 data<-data.frame(y=larain, x=zlag(larain))
 p.larain <- ggplot(data = data, mapping = aes(x,y))+
@@ -34,10 +43,20 @@ p.larain <- ggplot(data = data, mapping = aes(x,y))+
   ylab("Inches")
 ```
 
-
+\vspace{1cm}
 \textbf{1.2} 
-Time Series Plot of Color Property from a Chemical Process
-```{r, echo=FALSE, warning=FALSE}
+The time series plot of color property from a chemical process is presented in Figure \@ref(fig:tsp-color-property).
+
+\begin{figure}[htbp]
+    \centering
+        \includegraphics[width=0.7\textwidth]{plots/tsp_color_property.pdf}
+    \caption{Time Series Plot of Color Property from a Chemical Process}
+    \label{fig:tsp-color-property}
+\end{figure}
+
+
+\textbf{Code}
+```{r, eval=FALSE}
 data(color)
 data<-data.frame(y=color, x= c(1:length(color)))
 p.color <- ggplot(data = data, mapping = aes(x,y))+
@@ -48,9 +67,34 @@ p.color <- ggplot(data = data, mapping = aes(x,y))+
   ylab("Color Property")
 ```
 
+\newpage
+\textbf{1.5}
+Three time series plots of 48 random t-distributed values (df = 5) are presented in Figure \@ref(fig:tsp-t). All three plots look "random" since the values appear to fluctuate without any pattern and they look normal.
 
-\textbf{1.5} 
-```{r, echo=FALSE, warning=FALSE}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsp-t-1.pdf}
+        \subcaption{Random Sample 1}
+        \label{fig:normal4}
+    \end{subfigure}
+    \begin{subfigure}{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsp-t-2.pdf}
+         \subcaption{Random Sample 2}
+    \end{subfigure}
+    \begin{subfigure}{0.7\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsp-t-3.pdf}
+         \subcaption{Random Sample 3}
+    \end{subfigure}
+    \caption{Time Series Plots of 48 Random t-Distributed Values (df = 5)}
+    \label{fig:tsp-t}
+\end{figure}
+
+\textbf{Code}
+```{r, eval=FALSE}
 n <- 48
 df <- 5
 tdata <- rt(n, df)
@@ -60,13 +104,22 @@ p.t <- ggplot(data = data, mapping = aes(x,y))+
   geom_point()+
   theme_bw()+
   xlab("Time")+
-  ylab("T")
+  ylab("Value")
 ```
 
-
+\vspace{1cm}
 \textbf{1.6}
-Average Monthly Temperatures, Dubuque, Iowa
-```{r, echo=FALSE, warning=FALSE}
+The time series plot of the average monthly temperatures of Dubuque, Iowa is presented in Figure \@ref(fig:tsp-average).
+
+\begin{figure}[htbp]
+    \centering
+        \includegraphics[width=0.7\textwidth]{plots/tsp-average.pdf}
+    \caption{Time Series Plot of Average Monthly Temperatures, Dubuque, Iowa}
+    \label{fig:tsp-average}
+\end{figure}
+
+\textbf{Code}
+```{r, eval=FALSE}
 data(tempdub)
 data<-data.frame(y=tempdub, x=time(tempdub), s=as.vector(substr(season(tempdub),1,1)))
 p.temdub <- ggplot(data = data, mapping = aes(x,y))+
