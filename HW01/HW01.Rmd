@@ -69,7 +69,7 @@ p.color <- ggplot(data = data, mapping = aes(x,y))+
 
 \newpage
 \textbf{1.5}
-Three time series plots of 48 random t-distributed values (df = 5) are presented in Figure \@ref(fig:tsp-t). All three plots look "random" since the values appear to fluctuate without any pattern and they look more normal.
+Three time series plots of 48 random t-distributed values (df = 5) are presented in Figure \@ref(fig:tsp-t). All three plots look "random" since the values appear to fluctuate without any pattern and they look normal.
 
 \begin{figure}[htbp]
     \centering
